@@ -8,7 +8,11 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.19.9",
-    "hono": "^4.12.3"
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.3.1",
+    "hono": "^4.12.3",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.18.2"
   },
   "devDependencies": {
     "@types/node": "^20.11.17",
