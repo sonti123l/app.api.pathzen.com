@@ -1,3 +1,6 @@
+import { Hono } from "hono";
+
+const app = new Hono();
 class AuthController {
   getLoginDetails<
     T extends string,
@@ -8,7 +11,6 @@ class AuthController {
       /^(?!.*\.\.)[A-Za-z0-9](?:[A-Za-z0-9._%+-]{0,62}[A-Za-z0-9])?@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+$/;
 
     if (emailRegex.test(email) && !password) {
-        
     } else {
     }
   }
