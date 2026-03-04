@@ -14,9 +14,7 @@ app.use(
   }),
 );
 
-app.get("/", (c) => {
-  return c.text("Hello Hono!");
-});
+app.get("/", (c) => c.text("PathZen API is running!"));
 
 app.route("/", authRouter);
 
