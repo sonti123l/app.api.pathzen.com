@@ -1,18 +1,20 @@
 import { Hono } from "hono";
 import { authController } from "../controllers/authController.js";
 
-const app = new Hono();
+const authRouter = new Hono();
 
-app.post("/auth/login", async (c) => {
+authRouter.post("/auth/login", async (c) => {
   const json = await c.req.json();
   const authorizationToken = c.req.header("Authorization");
   const { email, password } = json;
 
-  const response = authController.getLoginDetails<string, string, string>(
+  const response = await authController.getLoginDetails( 
     email,
     password,
     String(authorizationToken),
   );
 
-  return c.json(JSON.stringify(response, null, 2));
+  return c.json(response);
 });
+
+export { authRouter }; 
