@@ -1,6 +1,5 @@
 import { Hono } from "hono";
 import { authController } from "../controllers/authController.js";
-import { jwt } from 'hono/jwt'
 
 const app = new Hono();
 
@@ -15,5 +14,5 @@ app.post("/auth/login", async (c) => {
     String(authorizationToken),
   );
 
-  return response;
+  return c.json(JSON.stringify(response, null, 2));
 });

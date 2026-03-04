@@ -10,6 +10,7 @@ export const HTTP_MESSAGES = {
   NOT_FOUND: "Resource not found",
   CONFLICT: "Resource already exists",
   VALIDATION_ERROR: "Validation failed",
+  UNPROCESSABLE_CONTENT: "Unprocessable content",
 
   INTERNAL_SERVER_ERROR: "Something went wrong",
   SERVICE_UNAVAILABLE: "Service temporarily unavailable",
