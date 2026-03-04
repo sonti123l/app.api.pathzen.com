@@ -1,6 +1,7 @@
 import { insertCommandForStudentsTable } from "../config/dbCommands.js";
 import { HTTP_MESSAGES } from "../constants/httpMessages.js";
 import { HTTP_STATUS } from "../constants/httpStatus.js";
+import bcrypt from "bcrypt";
 
 class AuthController {
   async getLoginDetails<
@@ -24,7 +25,7 @@ class AuthController {
       const result = await insertCommandForStudentsTable({
         studentName: "Sonti Sai trishal",
         studentEmail: email,
-        studentPassword: password,
+        studentPassword: await bcrypt.hash(password, 10),
         studentRollNo: "21481A05L1",
       });
 
