@@ -2,6 +2,9 @@ import { insertCommandForStudentsTable } from "../config/dbCommands.js";
 import { HTTP_MESSAGES } from "../constants/httpMessages.js";
 import { HTTP_STATUS } from "../constants/httpStatus.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+
+const JWT_SECRET = "pathzen_super_secret";
 
 class AuthController {
   async getLoginDetails<
@@ -22,17 +25,30 @@ class AuthController {
     }
 
     if (email && emailRegex.test(email) && password) {
+      const hashedPassword = await bcrypt.hash(password, 10);
       const result = await insertCommandForStudentsTable({
         studentName: "Sonti Sai trishal",
         studentEmail: email,
-        studentPassword: await bcrypt.hash(password, 10),
+        studentPassword: hashedPassword,
         studentRollNo: "21481A05L1",
       });
+
+      const token = jwt.sign(
+        {
+          email: email,
+          role: "student",
+        },
+        JWT_SECRET,
+        {
+          expiresIn: "30d",
+        },
+      );
 
       return {
         status: HTTP_STATUS.OK,
         message: HTTP_MESSAGES.OK,
         values: "Login Successful",
+        accessToken: token,
         data: result,
       };
     }
