@@ -64,6 +64,11 @@ class AuthController {
       message: HTTP_MESSAGES.OK,
       values: "Login successful",
       accessToken: token,
+      data: {
+        user_name: student.student_name,
+        user_email: student.student_mail,
+        user_roll_no: student.student_rollno,
+      },
     };
   }
 
