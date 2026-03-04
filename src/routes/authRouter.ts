@@ -3,7 +3,6 @@ import { authController } from "../controllers/authController.js";
 
 const authRouter = new Hono();
 
-// POST /api/login
 authRouter.post("/api/login", async (c) => {
   try {
     const { email, password } = await c.req.json();
@@ -15,7 +14,6 @@ authRouter.post("/api/login", async (c) => {
   }
 });
 
-// POST /api/register
 authRouter.post("/api/register", async (c) => {
   try {
     const { name, email, password, rollNo } = await c.req.json();
