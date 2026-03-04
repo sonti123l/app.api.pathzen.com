@@ -5,14 +5,7 @@ import { authRouter } from "./routes/authRouter.js";
 
 const app = new Hono();
 
-app.use(
-  "*",
-  cors({
-    origin: "https://app-path-zen-d5bveu87t-sonti123ls-projects.vercel.app",
-    allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowHeaders: ["Content-Type", "Authorization"],
-  }),
-);
+app.use("*", cors());
 
 app.get("/", (c) => c.text("PathZen API is running!"));
 
@@ -21,7 +14,7 @@ app.route("/", authRouter);
 serve(
   {
     fetch: app.fetch,
-    port: 3000,
+    port: 5757,
   },
   (info) => {
     console.log(`Server is running on http://localhost:${info.port}`);

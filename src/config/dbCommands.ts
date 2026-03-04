@@ -7,7 +7,7 @@ export const insertCommandForStudentsTable = async ({
   studentPassword,
   studentRollNo,
 }: StudentData) => {
-  const query = `INSERT INTO student_table (student_name, student_email, student_rollno, student_password) VALUES (?, ?, ?, ?)`;
+  const query = `INSERT INTO student_table (student_name, student_mail, student_rollno, student_password) VALUES (?, ?, ?, ?)`;
   const result = await pool.query(query, [
     studentName,
     studentEmail,
@@ -19,7 +19,7 @@ export const insertCommandForStudentsTable = async ({
 };
 
 export const findStudentByEmail = async (email: string) => {
-  const query = `SELECT * FROM student_table WHERE student_email = ? LIMIT 1`;
+  const query = `SELECT * FROM student_table WHERE student_mail = ? LIMIT 1`;
   const [rows] = await pool.query(query, [email]);
   return (rows as any[])[0] ?? null;
 };
